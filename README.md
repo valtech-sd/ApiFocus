@@ -1,6 +1,6 @@
 # Api Focus
 
-Focus on your API, not on boilerplate code!
+Focus on your API, not boilerplate code! ApiFocus is a scaffold project that brings together Swagger + ExpressJs to quickly create working APIs that dynamically change based on an API definition.
 
 ## What is this?
 
