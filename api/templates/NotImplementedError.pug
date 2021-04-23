@@ -1,0 +1,11 @@
+html
+  head
+    title HTTP #{err.status} Not-Implemented
+    link(rel="stylesheet", href="/static/styles/error.css", type="text/css")
+  body
+    div#main
+      h1 #{err.status} Not-Implemented
+      if swagger.pathName
+        p No implementation for <strong>#{swagger.pathName}</strong>.
+      div#syntax
+        | Consult this API's definition at <a href="/api-docs-ui" target="_blank">/api-docs-ui</a> for the complete documentation.
