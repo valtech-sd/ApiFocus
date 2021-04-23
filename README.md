@@ -50,6 +50,8 @@ Once the example server starts, direct your browser to any of the following:
 
 You can also send off CURLs (or use your favorite API client) against your running server to access the example endpoints. See [Example CURLs](README-EXAMPLE-CURLS.md).
 
+You also might want to check out the example Swagger definition included. It's in [/api/swagger.yaml](api/swagger.yaml).
+
 ## Making this project "Your Own" (Serving your own API)
 
 ### 1. Download this repo
@@ -61,6 +63,8 @@ Once you have this copy, you'll bring in your Swagger definition YAML file and y
 ### 2. Create a Swagger 2 Definition for your API
 
 The easiest way to create a Swagger 2 (OpenAPI v2) definition file is to use the free Swagger Editor.
+
+Want to see what a Swagger definition looks like? Check out the example Swagger definition included. It's in [/api/swagger.yaml](api/swagger.yaml).
 
 The options for running Swagger Editor are:
 
