@@ -1,0 +1,5 @@
+{
+  // This is the development (NODE_ENV=dev) config
+  // Only items to override from defaults or ENV need to be added here.
+  // swaggerSpecPath: './api/your-swagger-file-here.yaml'
+}

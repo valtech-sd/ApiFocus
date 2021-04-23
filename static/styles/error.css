@@ -1,0 +1,22 @@
+body {
+  font-family: Arial, serif;
+}
+div#main {
+  width: 800px;
+  margin: auto;
+}
+p#errorMessage {
+  margin: 0 20px;
+}
+div#syntax {
+  margin: 20px 0 0;
+  border: solid 1px black;
+  background-color: azure;
+  padding: 10px;
+}
+pre {
+  display: block;
+  font-family: monospace;
+  white-space: pre-wrap;
+  margin: 0;
+}

@@ -1,0 +1,19 @@
+html
+  head
+    title HTTP #{err.status} Error
+    link(rel="stylesheet", href="/static/styles/error.css", type="text/css")
+  body
+    div#main
+      h1 HTTP #{err.status} Error
+      if swagger.pathName
+        p The call to <strong>#{swagger.pathName}</strong> resulted in the error:
+      else
+        p The call resulted in an error:
+      p#errorMessage #{err.message}
+      div#syntax
+        if swagger.params.length > 0
+          | Parameter help for <strong>#{swagger.pathName}</strong>:
+          pre #{util.inspect(swagger.params)}
+        | Consult this API's definition at <a href="/api-docs-ui" target="_blank">/api-docs-ui</a> for the complete documentation.
+      p Note that per the <a href="https://swagger.io/specification/v2/" target="_blank">OpenAPI 2.0 Specification</a>,
+        |  all parameters are <strong>Case Sensitive</strong>.

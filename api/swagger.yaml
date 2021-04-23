@@ -1,0 +1,144 @@
+swagger: '2.0'
+
+info:
+  version: 1.0.0
+  title: API Focus - Example API
+  description: A simple example API for the API Focus Project.
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+tags:
+  - name: no auth
+    description: No authentication is required for these endpoints.
+  - name: auth required
+    description: |
+      Authentication is required for these endpoints. A device must pass a valid ApiKey header.
+
+paths:
+
+  /:
+    get:
+      tags:
+        - no auth
+      summary: API Ping
+      description: "This endpoint is used to verify the server is available."
+      x-swagger-router-controller: IndexController
+      operationId: indexGet
+      responses:
+        "200":
+          description: "**OK**: The server is up."
+
+  /echo:
+    post:
+      tags:
+        - no auth
+      summary: Echo Reply
+      description: |
+        Replies with whatever body is passed into the post.
+      x-swagger-router-controller: EchoController
+      operationId: echoPost
+      parameters:
+        - in: body
+          name: EchoRequest
+          required: true
+          schema:
+            $ref: '#/definitions/EchoRequest'
+
+      responses:
+        '200':
+          description: |
+            **OK**: It worked!
+          schema:
+            $ref: '#/definitions/EchoResponse'
+        '400':
+          description: |
+            **Bad Request**: Indicates some issue with the call, likely the request
+            fails parsing or validation.
+        '501':
+          description: |
+            **Not Implemented**: Indicates the endpoint does not have a matching
+            controller. Returns an HTML formatted error with further details.
+
+  /echo_secured:
+    post:
+      tags:
+        - auth required
+      summary: Echo Reply
+      description: |
+        Replies with whatever body is passed into the post.
+      security:
+        - ApiKeyAuth: []
+      x-swagger-router-controller: EchoSecuredController
+      operationId: echoSecuredPost
+      parameters:
+        - in: body
+          name: EchoRequest
+          required: true
+          schema:
+            $ref: '#/definitions/EchoRequest'
+
+      responses:
+        '200':
+          description: |
+            **OK**: It worked!
+          schema:
+            $ref: '#/definitions/EchoResponse'
+        '400':
+          description: |
+            **Bad Request**: Indicates some issue with the call, likely the request
+            fails parsing or validation.
+        '501':
+          description: |
+            **Not Implemented**: Indicates the endpoint does not have a matching
+            controller. Returns an HTML formatted error with further details.
+
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: apikey
+
+definitions:
+
+  EchoRequest:
+    description: |
+      This schema is used to format the Echo request body.
+    type: object
+    required:
+      - echoMessage
+    properties:
+      echoMessage:
+        description: |
+          The message to Echo.
+        type: string
+      outputTimestamp:
+        description: |
+          A boolean to indicate whether the echo should include a
+          timestamp when it responds.
+        type: boolean
+        default: false
+    example:
+      echoMessage: Hi there.
+      outputTimestamp: true
+
+  EchoResponse:
+    description: |
+      This schema is used to format the Echo response body.
+    type: object
+    required:
+      - echoMessage
+    properties:
+      echoMessage:
+        description: |
+          The message Echo.
+        type: string
+      timestamp:
+        description: |
+          The timestamp for the echo.
+        type: integer
+    example:
+      echoMessage: Hi there.
+      timestamp: 1618961900
