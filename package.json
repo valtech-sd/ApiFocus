@@ -1,6 +1,6 @@
 {
   "name": "nodejs-server-swagger-express-mvc-custom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A project that provides scaffolding to make it easy to create/maintain a functioning dynamic API from a Swagger 2 specification, with support for parsing & validating parameters, route management and route controller mapping by convention.",
   "main": "app.js",
   "scripts": {
